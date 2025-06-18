@@ -44,7 +44,7 @@
 
 import { useState } from 'react';
 
-const useAudioUploader = (uploadUrl = 'http://localhost:8000/transcribe') => {
+const useAudioUploader = (uploadUrl = 'http://silicore.ai:8000/transcribe') => {
   const [uploading, setUploading] = useState(false);
   const [transcription, setTranscription] = useState(null);
   const [error, setError] = useState(null);

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { saveAs } from 'file-saver';
 import useAudioUploader from '../hooks/useAudioUploader';
+import { TailSpin } from 'react-loader-spinner';
 
 const VoiceRecorder = () => {
   const [recording, setRecording] = useState(false);
@@ -61,8 +62,32 @@ const VoiceRecorder = () => {
         </div>
       )} */}
 
+      {uploading && !transcription && (
+        <div
+          style={{
+            marginTop: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <TailSpin
+            visible={true}
+            height="40"
+            width="40"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+          <p>Processing audio...</p>
+        </div>
+      )}
+
       {transcription && (
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 10 }}>
           <h4>Transcription</h4>
           <p>{transcription}</p>
         </div>
